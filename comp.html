@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,16 +15,7 @@
 <body>
   <header>
     <!-- Inclusion du contenu de barre.php -->
-    <div id="barre-placeholder"></div>
-
-    <script>
-      fetch('barre.php')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('barre-placeholder').innerHTML = data;
-        })
-        .catch(error => console.error('Erreur lors du chargement de barre.php:', error));
-    </script>
+    <?php include 'barre.html'; ?>
 
     <nav class="bg-cyan-700 text-black">
       <div class="container py-5">
@@ -53,15 +43,7 @@
   </div>
     -->
   <footer class="border-top">
-    <div id="bas-placeholder"></div>
-    <script>
-      fetch('bas.php')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('bas-placeholder').innerHTML = data;
-        })
-        .catch(error => console.error('Erreur lors du chargement de bas.php:', error));
-    </script>
+    <?php include 'bas.html'; ?>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
