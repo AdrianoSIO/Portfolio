@@ -13,17 +13,17 @@
 
 <body>
   <header>
-    <!-- Inclusion du contenu de barre.php -->
+    <!-- Inclusion du contenu de barre.html -->
     <div id="barre-placeholder"></div>
 
     <script>
-      // Charger le contenu de barre.php dans le header
-      fetch('barre.php')
+      // Charger le contenu de barre.html dans le header
+      fetch('barre.html')
         .then(response => response.text())
         .then(data => {
           document.getElementById('barre-placeholder').innerHTML = data;
         })
-        .catch(error => console.error('Erreur lors du chargement de barre.php:', error));
+        .catch(error => console.error('Erreur lors du chargement de barre.html:', error));
     </script>
 
     <nav class="bg-cyan-700 text-black">
@@ -49,13 +49,13 @@
   <footer class="border-top">
     <div id="bas-placeholder"></div>
     <script>
-      // Charger le contenu de bas.php dans le footer
-      fetch('bas.php')
+      // Charger le contenu de bas.html dans le footer
+      fetch('bas.html')
         .then(response => response.text())
         .then(data => {
           document.getElementById('bas-placeholder').innerHTML = data;
         })
-        .catch(error => console.error('Erreur lors du chargement de bas.php:', error));
+        .catch(error => console.error('Erreur lors du chargement de bas.html:', error));
     </script>
   </footer>
 
