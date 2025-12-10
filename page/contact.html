@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+  />
+  <script src="https://kit.fontawesome.com/14273d579a.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("P1u4RB7xEGJtq6P03"); // Clé publique corrigée
+    })();
+  </script>
+</head>
+
+<body>
+  <header>
+    <div id="barre-placeholder"></div>
+    <script>
+      fetch("barre.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("barre-placeholder").innerHTML = data;
+        })
+        .catch((error) =>
+          console.error("Erreur lors du chargement de barre.html:", error)
+        );
+    </script>
+    <nav class="bg-cyan-700 text-black">
+      <div class="container py-5">
+        <h1 class="text-center fw-lighter fw-italic fs-md-4 fs-md-2 fs-lg-2">
+          Vous souhaitez me contacter ?
+        </h1>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container py-5 bg-cyan-700 text-black">
+    <form id="contactForm">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Votre mail</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          name="from_email"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputObject1" class="form-label">Objet de discussion</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputObject1"
+          name="subject"
+          required
+        />
+      </div>
+      <div class="mb-5">
+        <label for="exampleInputMessage1" class="form-label">Message</label>
+        <textarea
+          class="form-control"
+          id="exampleInputMessage1"
+          name="message"
+          rows="8"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const emailValue = document.getElementById("exampleInputEmail1").value;
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail\.com|icloud\.com|yahoo\.com|outlook\.com)$/;
+
+      if (!emailPattern.test(emailValue)) {
+        alert("Veuillez entrer une adresse email valide (ex: @gmail.com, @icloud.com, etc.).");
+        return;
+      }
+
+      emailjs
+        .sendForm("service_rzq213s", "template_dnrdtuu", this)
+        .then(function (response) {
+          alert("Votre message a bien été envoyé !");
+          // Optionnel : réinitialiser le formulaire après envoi réussi
+          document.getElementById("contactForm").reset();
+        })
+        .catch(function (error) {
+          console.error("Erreur EmailJS:", error);
+          alert("Erreur lors de l’envoi. Vérifiez les identifiants ou réessayez plus tard.");
+        });
+    });
+  </script>
+
+  <footer class="border-top" style="padding: 10px 0;">
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch("bas.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        })
+        .catch((error) => console.error("Erreur lors du chargement de bas.html:", error));
+    </script>
+  </footer>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
